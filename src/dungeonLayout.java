@@ -99,15 +99,7 @@ public class dungeonLayout extends JFrame {
 		setContentPane(main);
 	}
 
-	public static void JButtonListener(JButton Button) {
-		Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dungeonSimulation();
-			}
-		});
-	}
-
-	private static void dungeonSimulation() {
+	public static void dungeonSimulation() {
 		try {
 			if(Integer.parseInt(heroValue.getText().replaceAll("[^0-9]", "")) < 0) {
 				errorLabel.setText("Input must bigger than 0.");

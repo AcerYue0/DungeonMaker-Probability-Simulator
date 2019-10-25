@@ -70,7 +70,7 @@ public class Simulation {
 	
 	private void NextBlock(int fromX, int fromY, int toX, int toY) {
 		//no relic 1, 1, 1, 2 (right, forward, left, backward)
-		//fake map 1, 1, 1, 7 (right, forward, left, backward)
+		//fake map 3, 2, 3, 2 (right, forward, left, backward)
 		//real map 2, 1, 2, 0 (right, forward, left, backward)
 		int k;
 		int NewX = toX;
@@ -80,13 +80,13 @@ public class Simulation {
 			k = rnd.nextInt(5);
 			if(toX == bossEntranceX && toY == bossEntranceY) {
 				dungeon[bossEntranceX][bossEntranceY]++;
-		    } else if(toX == 0 && k >= 0 && k <= 0) {
+		    } else if(toX == 0 && inRange(k, 0, 0)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toY == (dungeonY - 1) && k >= 1 && k <= 1) {
+		    } else if(toY == (dungeonY - 1) && inRange(k, 1, 1)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toX == (dungeonX - 1) && k >= 2 && k <= 2) {
+		    } else if(toX == (dungeonX - 1) && inRange(k, 2, 2)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toY == 0 && k >= 3 && k <= 4) {
+		    } else if(toY == 0 && inRange(k, 3, 4)) {
 		        NextBlock(fromX, fromY, toX, toY);
 		    } else {
 		    	if(inRange(k, 0, 0)) {
@@ -110,22 +110,22 @@ public class Simulation {
 			k = rnd.nextInt(10);
 			if(toX == bossEntranceX && toY == bossEntranceY) {
 				dungeon[bossEntranceX][bossEntranceY]++;
-		    } else if(toX == 0 && k >= 0 && k <= 0) {
+		    } else if(toX == 0 && inRange(k, 0, 2)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toY == (dungeonY - 1) && k >= 1 && k <= 1) {
+		    } else if(toY == (dungeonY - 1) && inRange(k, 3, 4)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toX == (dungeonX - 1) && k >= 2 && k <= 2) {
+		    } else if(toX == (dungeonX - 1) && inRange(k, 5, 7)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toY == 0 && k >= 3 && k <= 9) {
+		    } else if(toY == 0 && inRange(k, 8, 9)) {
 		        NextBlock(fromX, fromY, toX, toY);
 		    } else {
-		    	if(inRange(k, 0, 0)) {
+		    	if(inRange(k, 0, 2)) {
 	                NewX--;
-		    	} else if (inRange(k, 1, 1)) {
+		    	} else if (inRange(k, 3, 4)) {
 	                NewY++;
-		    	} else if (inRange(k, 2, 2)) {
+		    	} else if (inRange(k, 5, 7)) {
 	                NewX++;
-		    	} else if (inRange(k, 3, 9)) {
+		    	} else if (inRange(k, 8, 9)) {
 	                NewY--;
 		    	}
 		        if(NewX == fromX && NewY == fromY) {
@@ -140,11 +140,11 @@ public class Simulation {
 			k = rnd.nextInt(5);
 			if(toX == bossEntranceX && toY == bossEntranceY) {
 				dungeon[bossEntranceX][bossEntranceY]++;
-		    } else if(toX == 0 && k >= 0 && k <= 1) {
+		    } else if(toX == 0 && inRange(k, 0, 1)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toY == (dungeonY - 1) && k >= 2 && k <= 2) {
+		    } else if(toY == (dungeonY - 1) && inRange(k, 2, 2)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toX == (dungeonX - 1) && k >= 3 && k <= 4) {
+		    } else if(toX == (dungeonX - 1) && inRange(k, 3, 4)) {
 		        NextBlock(fromX, fromY, toX, toY);
 		    } else {
 		    	if(inRange(k, 0, 1)) {
@@ -208,7 +208,7 @@ public class Simulation {
 	void replaceProbebilityOf(JTextField[][] normalRoom) {
 		for(int i = 0; i < dungeonX; i++) {
 			for(int j = 0; j < dungeonY; j++) {
-				normalRoom[i][j].setText(String.format("%.3f", (double)dungeon[i][j] / hero));
+				normalRoom[i][j].setText(String.format("%7.3f", (double)dungeon[i][j] / hero));
 			}
 		}
 	}
