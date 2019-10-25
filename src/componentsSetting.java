@@ -135,7 +135,7 @@ public class componentsSetting extends dungeonLayout{
 		componentsSetNormalRoomStartY = y;
 		for (JLabel i : dungeonEntrance) {
 			if (componentsSetNormalRoomStartY == 200 ||
-				entranceState == 3 && (
+					DungeonState.getEntranceState() == 3 && (
 					dungeonEntrance.indexOf(i) == 0 ||
 					dungeonEntrance.indexOf(i) == dungeonEntrance.size() - 1
 				)) {

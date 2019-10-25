@@ -2,7 +2,8 @@ public class DungeonState {
 	private int depth;
 	private int width;
 	private char position;
-	private RelicState relicState; 
+	private static int entranceState;
+	private RelicState relicState;
 	
 	public DungeonState(int depth, int width, char position, RelicState relicState) {
 		this.depth = depth;
@@ -36,6 +37,12 @@ public class DungeonState {
 	}
 	public void setPosition(char position) {
 		this.position = position;
+	}
+	public static int getEntranceState() {
+		return entranceState;
+	}
+	public static void setEntranceState(int EntranceState) {
+		entranceState = EntranceState;
 	}
 	
 }

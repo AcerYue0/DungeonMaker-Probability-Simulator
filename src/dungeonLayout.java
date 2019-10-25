@@ -1,7 +1,5 @@
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.text.NumberFormat;
@@ -25,7 +23,6 @@ public class dungeonLayout extends JFrame {
 	static URL imageXMarkGray = dungeonLayout.class.getResource("xMarkGray.png");
 	static URL imageXMarkRed = dungeonLayout.class.getResource("xMarkRed.png");
 	static BufferedImage buttonIcon;
-	static int entranceState = 1;
 	static DungeonState dungeonState = new DungeonState(6, 5, 'M', RelicState.NoRelic);
 	static int dungeonSizeY = 0, dungeonSizeX = 0;	//X = depth, Y = width
 	static String dungeonSizeString[] = { 
@@ -35,8 +32,8 @@ public class dungeonLayout extends JFrame {
 			" 6x3", " 6x4(U)", " 6x4(D)", " 6x5" 
 	};
 	static String entranceCountString[] = {" 1", " 3"};
-	static NumberFormat format = NumberFormat.getNumberInstance();
 	static String address = "leeyuchin2618005@gmail.com";
+	static NumberFormat format = NumberFormat.getNumberInstance();
 
 	public static JPanel main;
 	public static JTextField bossRoom;
@@ -104,7 +101,7 @@ public class dungeonLayout extends JFrame {
 			if(Integer.parseInt(heroValue.getText().replaceAll("[^0-9]", "")) < 0) {
 				errorLabel.setText("Input must bigger than 0.");
 			}
-			Simulation sim = new Simulation(entranceState, dungeonState, Integer.parseInt(heroValue.getText().replaceAll("[^0-9]", "")));
+			Simulation sim = new Simulation(dungeonState, Integer.parseInt(heroValue.getText().replaceAll("[^0-9]", "")));
 			sim.startDungeonSimulating();
 			sim.replaceProbebilityOf(normalRoom);
 			errorLabel.setText("Simulate Complete.");

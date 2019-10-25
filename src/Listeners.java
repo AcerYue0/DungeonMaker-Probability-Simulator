@@ -88,7 +88,7 @@ public class Listeners extends dungeonLayout{
 							setGrayIcon(Label);
 						}
 					}
-					entranceState = 1;
+					DungeonState.setEntranceState(1);
 					break;
 				case 3:
 					for(JLabel Label : dungeonEntrance) {
@@ -100,7 +100,7 @@ public class Listeners extends dungeonLayout{
 							setGrayIcon(Label);
 						}
 					}
-					entranceState = 3;
+					DungeonState.setEntranceState(3);
 					break;
 				}
 		    }
