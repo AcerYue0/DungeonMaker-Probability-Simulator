@@ -63,9 +63,9 @@ public class Simulation {
 	}
 	
 	private void NextBlock(int fromX, int fromY, int toX, int toY) {
-		//no relic 1, 1, 1, 2 (right, forward, left, backward)
-		//fake map 3, 2, 3, 2 (right, forward, left, backward)
-		//real map 2, 1, 2, 0 (right, forward, left, backward)
+		//no relic 1, 1, 1, 2 (north, west, south, east)
+		//fake map 3, 2, 3, 2 (north, west, south, east)
+		//real map 2, 1, 2, 0 (north, west, south, east)
 		int k;
 		int NewX = toX;
 	    int NewY = toY;
