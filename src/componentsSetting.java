@@ -112,9 +112,9 @@ public class componentsSetting extends dungeonLayout{
 		dungeonSizeY = newDungeonHeight;
 		dungeonSizeX = newDungeonDepth;
 		componentsSetNormalRoomStartY = startY;
-		for (int i = 0; i < newDungeonHeight; i++) {
+		for (int i = 0; i < dungeonSizeY; i++) {
 			componentsSetNormalRoomStartX = startX;
-			for (int j = 0; j < newDungeonDepth; j++) {
+			for (int j = 0; j < dungeonSizeX; j++) {
 				normalRoom[i][j] = new JTextField();
 				normalRoom[i][j].setHorizontalAlignment(SwingConstants.CENTER);
 				normalRoom[i][j].setEditable(false);

@@ -63,9 +63,9 @@ public class Listeners extends dungeonLayout{
 				dungeonState.setDepthX(Character.getNumericValue(item.charAt(1)));
 				dungeonState.setWidthY(Character.getNumericValue(item.charAt(3)));
 				dungeonState.setPosition((item.length() > 5) ? item.charAt(5) : 'M');
-				componentsSetNormalRoomStartX = 260 + (dungeonState.getDepth() - 1) * 80;
-				componentsSetNormalRoomStartY = (dungeonState.getWidth() == 3 || dungeonState.getPosition() == 'D'? 120 : 40);
-				componentsSetting.normalRoomsInitialize(dungeonState.getWidth(), dungeonState.getDepth(), componentsSetNormalRoomStartX, componentsSetNormalRoomStartY);
+				componentsSetNormalRoomStartX = 260 + (DungeonState.getDepth() - 1) * 80;
+				componentsSetNormalRoomStartY = (DungeonState.getWidth() == 3 || DungeonState.getPosition() == 'D'? 120 : 40);
+				componentsSetting.normalRoomsInitialize(DungeonState.getWidth(), DungeonState.getDepth(), componentsSetNormalRoomStartX, componentsSetNormalRoomStartY);
 		    }
 		}
 	}

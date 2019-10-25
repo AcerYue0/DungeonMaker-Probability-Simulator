@@ -1,42 +1,43 @@
 public class DungeonState {
-	private int depth;
-	private int width;
-	private char position;
+	private static int depth;
+	private static int width;
+	private static char position;
 	private static int entranceState;
-	private RelicState relicState;
+	private static RelicState relicState;
 	
-	public DungeonState(int depth, int width, char position, RelicState relicState) {
-		this.depth = depth;
-		this.width = width;
-		this.position = position;
-		this.relicState = relicState;
+	public DungeonState(int Depth, int Width, char Position, RelicState RelicState, int EntranceState) {
+		depth = Depth;
+		width = Width;
+		position = Position;
+		relicState = RelicState;
+		entranceState = EntranceState;
 	}
 	
-	public RelicState getRelicState() {
+	public static RelicState getRelicState() {
 		return relicState;
 	}
 
-	public void setRelicState(RelicState relicState) {
-		this.relicState = relicState;
+	public void setRelicState(RelicState RelicState) {
+		relicState = RelicState;
 	}
 
-	public int getDepth() {
+	public static int getDepth() {
 		return depth;
 	}
-	public void setDepthX(int depth) {
-		this.depth = depth;
+	public void setDepthX(int Depth) {
+		depth = Depth;
 	}
-	public int getWidth() {
+	public static int getWidth() {
 		return width;
 	}
-	public void setWidthY(int width) {
-		this.width = width;
+	public void setWidthY(int Width) {
+		width = Width;
 	}
-	public char getPosition() {
+	public static char getPosition() {
 		return position;
 	}
-	public void setPosition(char position) {
-		this.position = position;
+	public void setPosition(char Position) {
+		position = Position;
 	}
 	public static int getEntranceState() {
 		return entranceState;

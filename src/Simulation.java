@@ -5,7 +5,6 @@ import javax.swing.JTextField;
 public class Simulation {
 	
 	static Random rnd = new Random(System.currentTimeMillis());
-	DungeonState dungeonState;
 	private RelicState RelicState;
 	private int bossEntranceX;
 	private int bossEntranceY;
@@ -14,15 +13,14 @@ public class Simulation {
 	private int dungeon[][];
 	private boolean isBackwardingWithRealMap = false;
 	
-	Simulation(DungeonState dungeonState, int heroCount){
-		this.dungeonState = dungeonState;
-		this.dungeon = new int[dungeonState.getWidth()][dungeonState.getDepth()];
+	Simulation(int heroCount){
+		this.dungeon = new int[DungeonState.getWidth()][DungeonState.getDepth()];
 		this.hero = heroCount;
-		setBossEntrance(dungeonState);
+		setBossEntrance();
 	}
 	
-	private void setBossEntrance(DungeonState dungeonState) {
-		switch(dungeonState.getPosition()) {
+	private void setBossEntrance() {
+		switch(DungeonState.getPosition()) {
 		case 'U':
 			this.bossEntranceX = 2;
 			break;
@@ -30,7 +28,7 @@ public class Simulation {
 			this.bossEntranceX = 1;
 			break;
 		}
-		switch(dungeonState.getWidth()) {
+		switch(DungeonState.getWidth()) {
 		case 3:
 			this.bossEntranceX = 1;
 			break;
@@ -38,8 +36,8 @@ public class Simulation {
 			this.bossEntranceX = 2;
 			break;
 		}
-		this.bossEntranceY = dungeonState.getDepth() - 1;
-		this.RelicState = dungeonState.getRelicState();
+		this.bossEntranceY = DungeonState.getDepth() - 1;
+		this.RelicState = DungeonState.getRelicState();
 	}
 
 	void startDungeonSimulating() {
@@ -58,7 +56,7 @@ public class Simulation {
 			        NextBlock(-1, -1, bossEntranceX, 0);
 			        break;
 				case 4:
-			        NextBlock(-1, -1, dungeonState.getWidth() - 1, 0);
+			        NextBlock(-1, -1, DungeonState.getWidth() - 1, 0);
 				}
 		    }
 		}
@@ -78,9 +76,9 @@ public class Simulation {
 				dungeon[bossEntranceX][bossEntranceY]++;
 		    } else if(toX == 0 && inRange(k, 0, 0)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toY == (dungeonState.getDepth() - 1) && inRange(k, 1, 1)) {
+		    } else if(toY == (DungeonState.getDepth() - 1) && inRange(k, 1, 1)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toX == (dungeonState.getWidth() - 1) && inRange(k, 2, 2)) {
+		    } else if(toX == (DungeonState.getWidth() - 1) && inRange(k, 2, 2)) {
 		        NextBlock(fromX, fromY, toX, toY);
 		    } else if(toY == 0 && inRange(k, 3, 4)) {
 		        NextBlock(fromX, fromY, toX, toY);
@@ -108,9 +106,9 @@ public class Simulation {
 				dungeon[bossEntranceX][bossEntranceY]++;
 		    } else if(toX == 0 && inRange(k, 0, 2)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toY == (dungeonState.getDepth() - 1) && inRange(k, 3, 4)) {
+		    } else if(toY == (DungeonState.getDepth() - 1) && inRange(k, 3, 4)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toX == (dungeonState.getWidth() - 1) && inRange(k, 5, 7)) {
+		    } else if(toX == (DungeonState.getWidth() - 1) && inRange(k, 5, 7)) {
 		        NextBlock(fromX, fromY, toX, toY);
 		    } else if(toY == 0 && inRange(k, 8, 9)) {
 		        NextBlock(fromX, fromY, toX, toY);
@@ -138,13 +136,13 @@ public class Simulation {
 				dungeon[bossEntranceX][bossEntranceY]++;
 		    } else if(toX == 0 && inRange(k, 0, 1)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toY == (dungeonState.getDepth() - 1) && inRange(k, 2, 2)) {
+		    } else if(toY == (DungeonState.getDepth() - 1) && inRange(k, 2, 2)) {
 		        NextBlock(fromX, fromY, toX, toY);
-		    } else if(toX == (dungeonState.getWidth() - 1) && inRange(k, 3, 4)) {
+		    } else if(toX == (DungeonState.getWidth() - 1) && inRange(k, 3, 4)) {
 		        NextBlock(fromX, fromY, toX, toY);
 		    } else {
 		    	if(inRange(k, 0, 1)) {
-		    		if(fromX == (dungeonState.getWidth() - 1) && isBackwardingWithRealMap) {
+		    		if(fromX == (DungeonState.getWidth() - 1) && isBackwardingWithRealMap) {
 		    			isBackwardingWithRealMap = false;
 		    		}
 	                NewX--;
@@ -159,7 +157,7 @@ public class Simulation {
 		    		}
 	                NewX++;
 		    	}
-		    	if (toY == bossEntranceY && (toX == 0 || toX == (dungeonState.getWidth() - 1)) && (fromX == toX - 1 || fromX == toX + 1)) {
+		    	if (toY == bossEntranceY && (toX == 0 || toX == (DungeonState.getWidth() - 1)) && (fromX == toX - 1 || fromX == toX + 1)) {
 	        		dungeon[toX][toY]++;
 	        		dungeon[toX][toY - 1]++;
 	        		isBackwardingWithRealMap = true;
@@ -174,7 +172,7 @@ public class Simulation {
 				        	NextBlock(0, toY - 1, toX + 1, toY - 1);
 		        			break;
 		        		}
-		        	} else if(toX == (dungeonState.getWidth() - 1)){
+		        	} else if(toX == (DungeonState.getWidth() - 1)){
 		        		dungeon[toX][toY]++;
 		        		dungeon[toX][toY - 1]++;
 		        		int b = rnd.nextInt(2);
@@ -202,8 +200,8 @@ public class Simulation {
 	}
 
 	void replaceProbebilityOf(JTextField[][] normalRoom) {
-		for(int i = 0; i < dungeonState.getWidth(); i++) {
-			for(int j = 0; j < dungeonState.getDepth(); j++) {
+		for(int i = 0; i < DungeonState.getWidth(); i++) {
+			for(int j = 0; j < DungeonState.getDepth(); j++) {
 				normalRoom[i][j].setText(String.format("%7.3f", (double)dungeon[i][j] / hero));
 			}
 		}

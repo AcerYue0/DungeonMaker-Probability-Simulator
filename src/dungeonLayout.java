@@ -23,7 +23,7 @@ public class dungeonLayout extends JFrame {
 	static URL imageXMarkGray = dungeonLayout.class.getResource("xMarkGray.png");
 	static URL imageXMarkRed = dungeonLayout.class.getResource("xMarkRed.png");
 	static BufferedImage buttonIcon;
-	static DungeonState dungeonState = new DungeonState(6, 5, 'M', RelicState.NoRelic);
+	static DungeonState dungeonState = new DungeonState(6, 5, 'M', RelicState.NoRelic, 1);
 	static int dungeonSizeY = 0, dungeonSizeX = 0;	//X = depth, Y = width
 	static String dungeonSizeString[] = { 
 			" 3x3", " 3x4(U)", " 3x4(D)", " 3x5",
@@ -101,7 +101,7 @@ public class dungeonLayout extends JFrame {
 			if(Integer.parseInt(heroValue.getText().replaceAll("[^0-9]", "")) < 0) {
 				errorLabel.setText("Input must bigger than 0.");
 			}
-			Simulation sim = new Simulation(dungeonState, Integer.parseInt(heroValue.getText().replaceAll("[^0-9]", "")));
+			Simulation sim = new Simulation(Integer.parseInt(heroValue.getText().replaceAll("[^0-9]", "")));
 			sim.startDungeonSimulating();
 			sim.replaceProbebilityOf(normalRoom);
 			errorLabel.setText("Simulate Complete.");
