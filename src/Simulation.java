@@ -199,10 +199,10 @@ public class Simulation {
 		}
 	}
 
-	void replaceProbebilityOf(JTextField[][] normalRoom) {
+	void replaceProbebilityOf(Tile[][] tile) {
 		for(int i = 0; i < DungeonState.getWidth(); i++) {
 			for(int j = 0; j < DungeonState.getDepth(); j++) {
-				normalRoom[i][j].setText(String.format("%7.3f", (double)dungeon[i][j] / hero));
+				tile[i][j].setText(String.format("%7.3f", (double)dungeon[i][j] / hero));
 			}
 		}
 	}

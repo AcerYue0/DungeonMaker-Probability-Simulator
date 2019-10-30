@@ -115,13 +115,12 @@ public class componentsSetting extends dungeonLayout{
 		for (int i = 0; i < dungeonSizeY; i++) {
 			componentsSetNormalRoomStartX = startX;
 			for (int j = 0; j < dungeonSizeX; j++) {
-				normalRoom[i][j] = new JTextField();
-				normalRoom[i][j].setHorizontalAlignment(SwingConstants.CENTER);
-				normalRoom[i][j].setEditable(false);
-				normalRoom[i][j].setBounds(componentsSetNormalRoomStartX, componentsSetNormalRoomStartY, 60, 60);
-				normalRoom[i][j].setColumns(10);
-				normalRoom[i][j].setText("0");
-				main.add(normalRoom[i][j]);
+				tile[i][j] = new Tile();
+				tile[i][j].setHorizontalAlignment(SwingConstants.CENTER);
+				tile[i][j].setBounds(componentsSetNormalRoomStartX, componentsSetNormalRoomStartY, 60, 60);
+				tile[i][j].setText("0");
+				//tile[i][j].addActionListener(new Listeners.setDungeonTileListener(tile[i][j]));
+				main.add(tile[i][j]);
 				componentsSetNormalRoomStartX -= 80;
 			}
 			componentsSetNormalRoomStartY += 80;
@@ -154,7 +153,7 @@ public class componentsSetting extends dungeonLayout{
 	public static void removeRooms() {
 		for (int i = 0; i < dungeonSizeY; i++) {
 			for (int j = 0; j < dungeonSizeX; j++) {
-				main.remove(normalRoom[i][j]);
+				main.remove(tile[i][j]);
 			}
 		}
 		for(JLabel Label : dungeonEntrance) {

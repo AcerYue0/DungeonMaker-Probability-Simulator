@@ -40,6 +40,7 @@ public class dungeonLayout extends JFrame {
 	public static JFormattedTextField heroValue;
 	public static JLabel heroValueLabel, dungeonSizeLabel, errorLabel, entranceCountLabel;
 	public static JTextField[][] normalRoom = new JTextField[5][6];
+	public static Tile[][] tile = new Tile[5][6];
 	public static int componentsSetNormalRoomStartY, componentsSetNormalRoomStartX;
 	public static JSeparator separator = new JSeparator();
 	public static List<JLabel> dungeonEntrance = new ArrayList<JLabel>();
@@ -103,7 +104,7 @@ public class dungeonLayout extends JFrame {
 			}
 			Simulation sim = new Simulation(Integer.parseInt(heroValue.getText().replaceAll("[^0-9]", "")));
 			sim.startDungeonSimulating();
-			sim.replaceProbebilityOf(normalRoom);
+			sim.replaceProbebilityOf(tile);
 			errorLabel.setText("Simulate Complete.");
 		} catch (NumberFormatException e) {
 			errorLabel.setText("Please input numberic value.");

@@ -1,18 +1,11 @@
-public class DungeonState {
+public class DungeonState{
 	private static int depth;
 	private static int width;
-	private int east;
-	private int west;
-	private int south;
-	private int north;
-	private int index;
-	private boolean eastPath;
-	private boolean westPath;
-	private boolean southPath;
-	private boolean northPath;
+	
 	private static char position;
 	private static int entranceState;
 	private static RelicState relicState;
+	private Tile[][] tile;
 	
 	public DungeonState(int Depth, int Width, char Position, RelicState RelicState, int EntranceState) {
 		depth = Depth;
@@ -53,6 +46,14 @@ public class DungeonState {
 	}
 	public static void setEntranceState(int EntranceState) {
 		entranceState = EntranceState;
+	}
+
+	public Tile[][] getTile() {
+		return tile;
+	}
+
+	public void setTile(Tile[][] tile) {
+		this.tile = tile;
 	}
 	
 }
