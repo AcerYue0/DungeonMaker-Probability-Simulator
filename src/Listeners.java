@@ -107,6 +107,17 @@ public class Listeners extends dungeonLayout{
 		}
 	}
 	
+	public class setDungeonTileListener implements ActionListener{
+		Tile tile;
+		public setDungeonTileListener(Tile tile){
+			this.tile = tile;
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	}
+	
 	public static void setGrayIcon(JLabel Label) {
 		setIcon(imageXMarkGray);
 		Label.setIcon(new ImageIcon(buttonIcon));
